@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 3.8)
+project(robotics_course_interfaces)
+
+find_package(ament_cmake REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
+find_package(std_msgs REQUIRED)
+
+# SceneDescription.msg — неизменённая копия из .course-kit/v1/interfaces/msg
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "msg/SceneDescription.msg"
+  DEPENDENCIES std_msgs
+)
+
+ament_export_dependencies(rosidl_default_runtime)
+ament_package()

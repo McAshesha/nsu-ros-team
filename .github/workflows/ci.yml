@@ -28,7 +28,7 @@ jobs:
             ros-jazzy-ros-gz ros-jazzy-rosbag2-storage-mcap \
             ros-jazzy-nav2-amcl ros-jazzy-nav2-map-server \
             ros-jazzy-nav2-lifecycle-manager ros-jazzy-tf2-ros-py ros-jazzy-tf2-tools \
-            ros-jazzy-vision-msgs ros-jazzy-diagnostic-msgs \
+            ros-jazzy-vision-msgs ros-jazzy-diagnostic-msgs python3-jsonschema \
             liburdfdom-tools python3-pytest
 
       - name: Download course kit
@@ -44,7 +44,7 @@ jobs:
         run: |
           source /opt/ros/jazzy/setup.bash
           colcon build --symlink-install --packages-select \
-            turtle_bringup patrol course_bringup course_description course_simulation localization_case perception_baseline
+            turtle_bringup patrol course_bringup course_description course_simulation localization_case perception_baseline robotics_course_interfaces scene_adapter
 
       - name: Check URDF
         shell: bash
@@ -59,7 +59,7 @@ jobs:
           source /opt/ros/jazzy/setup.bash
           source install/setup.bash
           colcon test --packages-select \
-            turtle_bringup patrol course_bringup course_description course_simulation localization_case perception_baseline \
+            turtle_bringup patrol course_bringup course_description course_simulation localization_case perception_baseline robotics_course_interfaces scene_adapter \
             --event-handlers console_direct+
           colcon test-result --verbose
 
@@ -81,6 +81,6 @@ jobs:
             python3 -c 'import json, sys; sys.exit(json.load(open("/tmp/pr09-metrics.json")) != json.load(open("evidence/pr09/metrics.json")))'
           fi
 
-      - name: Check PR09 evidence
+      - name: Check PR10 evidence
         shell: bash
-        run: python3 .course-kit/v1/tools/check_practice.py PR09 --submission .
+        run: python3 .course-kit/v1/tools/check_practice.py PR10 --submission .
