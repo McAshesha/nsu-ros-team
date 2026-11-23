@@ -1,0 +1,44 @@
+# ПР09: живой показ perception_node (Docker, ROS 2 Jazzy, ROS_DOMAIN_ID=16, 23.11.2026)
+# Терминал A: ros2 run perception_baseline perception_node
+# Терминал B: ros2 run perception_baseline <команда ниже> (по очереди)
+# Терминал C: подписчик на /perception/detections_2d, /perception/objects_3d, /perception/status;
+# level: 0 = OK, 1 = WARN. boxes2d — центр и размер bbox в пикселях, objects_3d — точка в метрах.
+
+## Прогон 1, коммит 0732136
+
+$ ros2 run perception_baseline send_pair --ros-args -p sample:=sample-04
+06:51:18 status stamp=1795416678.703203047 frame=camera_optical_frame level=b'\x00' reason=ok 2d=1 3d=1 boxes2d(center,size)=[(5.0, 2.5, 2.0, 3.0)] objects_3d=('1795416678.703203047', 'camera_optical_frame', [(0.1875, -0.0625, 1.0)])
+
+$ ros2 run perception_baseline send_pair --ros-args -p sample:=sample-04 -p depth_mode:=zero
+06:51:24 status stamp=1795416684.729586591 frame=camera_optical_frame level=b'\x01' reason=zero_depth 2d=1 3d=0 boxes2d(center,size)=[(5.0, 2.5, 2.0, 3.0)] objects_3d=('1795416684.729586591', 'camera_optical_frame', [])
+
+$ ros2 run perception_baseline send_pair --ros-args -p sample:=sample-04 -p depth_mode:=none
+06:51:28 status stamp=1795416687.791560426 frame=camera_optical_frame level=b'\x01' reason=stamp_mismatch 2d=1 3d=0 boxes2d(center,size)=[(5.0, 2.5, 2.0, 3.0)] objects_3d=('1795416687.791560426', 'camera_optical_frame', [])
+
+$ ros2 run perception_baseline send_pair --ros-args -p sample:=sample-04 -p depth_mode:=stamp
+06:51:31 status stamp=1795416690.775311636 frame=camera_optical_frame level=b'\x01' reason=stamp_mismatch 2d=1 3d=0 boxes2d(center,size)=[(5.0, 2.5, 2.0, 3.0)] objects_3d=('1795416690.775311636', 'camera_optical_frame', [])
+
+$ ros2 run perception_baseline send_pair --ros-args -p sample:=sample-04 -p frame_id:=camera_link
+06:51:33 status stamp=1795416693.743849637 frame=camera_link level=b'\x01' reason=frame_mismatch 2d=1 3d=0 boxes2d(center,size)=[(5.0, 2.5, 2.0, 3.0)] objects_3d=('1795416693.743849637', 'camera_link', [])
+
+Третий случай (без depth) дал stamp_mismatch вместо missing_depth: в буфере оставалась depth прошлых
+отправок, а нода считала любую depth в буфере признаком другого stamp. Исправлено в 2bccbbc:
+stamp_mismatch — только если depth пришла в окне ожидания этого кадра; добавлен регрессионный тест
+test_old_depth_in_buffer_is_missing_not_stamp_mismatch (на версии 0732136 падает с этой же ошибкой).
+
+## Прогон 2, коммит 2bccbbc
+
+$ ros2 run perception_baseline send_pair --ros-args -p sample:=sample-04
+06:53:30 status stamp=1795416810.061962302 frame=camera_optical_frame level=b'\x00' reason=ok 2d=1 3d=1 boxes2d(center,size)=[(5.0, 2.5, 2.0, 3.0)] objects_3d=('1795416810.061962302', 'camera_optical_frame', [(0.1875, -0.0625, 1.0)])
+
+$ ros2 run perception_baseline send_pair --ros-args -p sample:=sample-04 -p depth_mode:=zero
+06:53:33 status stamp=1795416813.011890762 frame=camera_optical_frame level=b'\x01' reason=zero_depth 2d=1 3d=0 boxes2d(center,size)=[(5.0, 2.5, 2.0, 3.0)] objects_3d=('1795416813.011890762', 'camera_optical_frame', [])
+
+$ ros2 run perception_baseline send_pair --ros-args -p sample:=sample-04 -p depth_mode:=none
+06:53:36 status stamp=1795416816.017637222 frame=camera_optical_frame level=b'\x01' reason=missing_depth 2d=1 3d=0 boxes2d(center,size)=[(5.0, 2.5, 2.0, 3.0)] objects_3d=('1795416816.017637222', 'camera_optical_frame', [])
+
+$ ros2 run perception_baseline send_pair --ros-args -p sample:=sample-04 -p depth_mode:=stamp
+06:53:39 status stamp=1795416819.003155542 frame=camera_optical_frame level=b'\x01' reason=stamp_mismatch 2d=1 3d=0 boxes2d(center,size)=[(5.0, 2.5, 2.0, 3.0)] objects_3d=('1795416819.003155542', 'camera_optical_frame', [])
+
+$ ros2 run perception_baseline send_pair --ros-args -p sample:=sample-04 -p frame_id:=camera_link
+06:53:42 status stamp=1795416821.998899335 frame=camera_link level=b'\x01' reason=frame_mismatch 2d=1 3d=0 boxes2d(center,size)=[(5.0, 2.5, 2.0, 3.0)] objects_3d=('1795416821.998899335', 'camera_link', [])

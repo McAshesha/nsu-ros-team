@@ -1,0 +1,34 @@
+$ colcon test --packages-select perception_baseline --event-handlers console_direct+
+================== 24 passed, 1 skipped, 10 warnings in 3.13s ==================
+Summary: 1 package finished [3.93s]
+
+$ colcon test-result --verbose
+Summary: 25 tests, 0 errors, 0 failures, 1 skipped
+
+$ cd src/perception_baseline && python3 -m pytest test -v
+test/test_copyright.py::test_copyright SKIPPED (No copyright header ...) [  4%]
+test/test_detector.py::test_configs_are_unchanged_copies_of_fixture PASSED [  8%]
+test/test_detector.py::test_detector_matches_public_evaluator[sample-01] PASSED [ 12%]
+test/test_detector.py::test_detector_matches_public_evaluator[sample-02] PASSED [ 16%]
+test/test_detector.py::test_detector_matches_public_evaluator[sample-03] PASSED [ 20%]
+test/test_detector.py::test_detector_matches_public_evaluator[sample-04] PASSED [ 24%]
+test/test_detector.py::test_detector_matches_public_evaluator[sample-05] PASSED [ 28%]
+test/test_detector.py::test_detector_matches_public_evaluator[sample-06] PASSED [ 32%]
+test/test_detector.py::test_bytes_roundtrip_gives_same_detections PASSED [ 36%]
+test/test_detector.py::test_depth_pixel_is_bbox_center_rounded_down PASSED [ 40%]
+test/test_detector.py::test_projection_matches_formula PASSED            [ 44%]
+test/test_detector.py::test_rgb_step_with_row_padding PASSED             [ 48%]
+test/test_detector.py::test_depth_byte_order PASSED                      [ 52%]
+test/test_detector.py::test_invalid_depth_is_rejected[32FC1-16-16] PASSED [ 56%]
+test/test_detector.py::test_invalid_depth_is_rejected[16UC1-8-15] PASSED [ 60%]
+test/test_flake8.py::test_flake8 PASSED                                  [ 64%]
+test/test_node.py::test_valid_pair_gives_point_by_formula PASSED         [ 68%]
+test/test_node.py::test_stamp_and_frame_are_copied_from_rgb PASSED       [ 72%]
+test/test_node.py::test_zero_depth_is_unknown PASSED                     [ 76%]
+test/test_node.py::test_missing_depth_is_unknown_after_bounded_wait PASSED [ 80%]
+test/test_node.py::test_old_depth_in_buffer_is_missing_not_stamp_mismatch PASSED [ 84%]
+test/test_node.py::test_different_stamp_is_unknown PASSED                [ 88%]
+test/test_node.py::test_wrong_frame_is_unknown PASSED                    [ 92%]
+test/test_node.py::test_invalid_depth_encoding_is_unknown PASSED         [ 96%]
+test/test_pep257.py::test_pep257 PASSED                                  [100%]
+================== 24 passed, 1 skipped, 10 warnings in 3.14s ==================
