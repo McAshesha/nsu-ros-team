@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "practice_id": "PR10",
+  "commit": "1e2e4390e5e5c0b37722eaed622ac493790cb4d6",
+  "course_kit": {
+    "version": "v1-w11",
+    "archive_sha256": "0b67bfd41448549d21122124b7f49211ba2cd068cc56751871f319eadeb9d0ab"
+  },
+  "commands": [
+    "colcon build --symlink-install --packages-up-to scene_adapter",
+    "python3 -c '<проверка четырёх fixtures по JSON Schema и через SceneAdapter, см. schema-check.txt>'",
+    "colcon test --packages-select scene_adapter --event-handlers console_direct+ --pytest-args -v",
+    "colcon test-result --test-result-base build/scene_adapter --verbose",
+    "ros2 run scene_adapter scene_adapter --ros-args --params-file config/vlm.yaml",
+    "ros2 run scene_adapter scene_adapter --ros-args --params-file config/vlm.yaml -p fixture_path:=fixtures/vlm/scene-stale.json",
+    "ros2 topic pub /clock rosgraph_msgs/msg/Clock \"{clock: {sec: 0, nanosec: 100000000}}\"",
+    "ros2 topic echo /perception/scene robotics_course_interfaces/msg/SceneDescription --once",
+    "python3 .course-kit/v1/tools/check_practice.py PR10 --submission ."
+  ],
+  "tests": [
+    {
+      "name": "test_contract.py: четыре fixtures дают valid, low_confidence, stale_input, invalid_schema при now_s 0.1/0.1/2.0/0.1",
+      "status": "passed"
+    },
+    {
+      "name": "test_contract.py: канонический unknown сохраняет stamp и frame, поле drive отклоняет весь ответ, битый JSON даёт invalid_schema",
+      "status": "passed"
+    },
+    {
+      "name": "test_contract.py: JSON <-> SceneDescription для всех 25 сочетаний enum, null-расстояния, перевод stamp_s, неизвестный enum даёт invalid_schema",
+      "status": "passed"
+    },
+    {
+      "name": "test_cache.py::test_miss_calls_backend_and_hit_does_not",
+      "status": "passed"
+    },
+    {
+      "name": "test_cache.py::test_cache_hit_is_checked_for_age_again",
+      "status": "passed"
+    },
+    {
+      "name": "test_cache.py::test_each_input_change_is_cache_miss[image|prompt|model_id|generation_config]",
+      "status": "passed"
+    },
+    {
+      "name": "test_cache.py::test_each_key_component_changes_key (5 частей ключа)",
+      "status": "passed"
+    },
+    {
+      "name": "test_cache.py::test_key_does_not_depend_on_config_key_order",
+      "status": "passed"
+    },
+    {
+      "name": "test_cache.py::test_live_without_backend_fails_clearly",
+      "status": "passed"
+    },
+    {
+      "name": "test_cache.py::test_cache_miss_without_backend_fails_clearly",
+      "status": "passed"
+    },
+    {
+      "name": "test_node.py::test_mock_clear_is_published_valid",
+      "status": "passed"
+    },
+    {
+      "name": "test_node.py::test_mock_stale_is_published_unknown",
+      "status": "passed"
+    },
+    {
+      "name": "test_flake8.py::test_flake8",
+      "status": "passed"
+    },
+    {
+      "name": "test_pep257.py::test_pep257",
+      "status": "passed"
+    },
+    {
+      "name": "test_copyright.py::test_copyright",
+      "status": "skipped"
+    },
+    {
+      "name": "ROS-проверка ноды: clear при /clock 0.1 valid, stale при /clock 2.0 unknown/stale_input (ros-live.txt)",
+      "status": "passed"
+    }
+  ],
+  "defect": {
+    "reproducer": "Коммит 93f4dea: prompt_sha256 убран из ключа кэша. colcon test: падают test_each_input_change_is_cache_miss[prompt] (backend.calls 1 вместо 2) и test_each_key_component_changes_key[prompt_sha256] (ключи равны 0d59dd83...). В режиме cache тот же кадр с изменённым промптом дал тот же ключ, backend не вызван, адаптер выдал старый ответ green как valid, хотя для нового промпта ответ red.",
+    "root_cause": "Ключ кэша должен включать все входы, от которых зависит ответ модели. Без prompt_sha256 ответы на разные промпты к одному кадру попадают в одну запись, и сохранённый ответ на другой вопрос проходит схему, возраст и порог как обычный valid.",
+    "proof_after": "Коммит 1e2e439: prompt_sha256 фактически прочитанного файла промпта возвращён в ключ. Те же тесты проходят (62 passed, 1 skipped); в том же сценарии ключи разные (c1fa013a... и 6124820a...), backend вызывается второй раз, результат red."
+  },
+  "claims": {
+    "public_tests_passed": true,
+    "defect_reproduced": true,
+    "defect_fixed": true,
+    "offline_verified": true
+  },
+  "time": {
+    "contact_academic_hours": 2,
+    "self_study_hours": 3
+  },
+  "ai_used": true
+}
