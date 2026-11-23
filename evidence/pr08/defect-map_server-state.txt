@@ -1,0 +1,4 @@
+$ ros2 lifecycle get /map_server --no-daemon
+active [3]
+
+exit=0

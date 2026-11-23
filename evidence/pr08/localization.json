@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "map_sha256": {
+    "map.yaml": "79d1003f551943d946a047295f100b1980c00415009b52e60cb9a9eaedf66cc0",
+    "map.pgm": "f190d3ecdbeebe8e9ac476d02dfcc47d51014638b38ba7a1d8a3c604039549de"
+  },
+  "recording": {
+    "path": "fixtures/pr07-sensors",
+    "duration_s": 30.57
+  },
+  "initial_pose": {
+    "x_m": 0.0,
+    "y_m": 0.0,
+    "yaw_rad": 0.0
+  },
+  "evaluation": {
+    "warmup_s": 10.0,
+    "duration_s": 20.0,
+    "tf_queries_total": 200,
+    "tf_queries_successful": 200,
+    "tf_availability": 1.0,
+    "amcl_pose_samples": 66,
+    "median_xy_covariance_m2": 0.03406766857443408
+  },
+  "defect": {
+    "before_base_frame_id": "chassis",
+    "after_base_frame_id": "base_link",
+    "observed_symptom": "chassis is absent in recorded TF; AMCL cannot obtain the laser-to-base transform or publish map -> odom. See defect-launch.txt and tf.md."
+  }
+}

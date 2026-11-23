@@ -1,0 +1,2 @@
+ros2 bag record --storage mcap --use-sim-time -o fixtures/pr07-sensors --topics /vehicle/scan /vehicle/odom /vehicle/imu /tf /tf_static /clock
+Recorded driving interval: 151.326 .. 188.327

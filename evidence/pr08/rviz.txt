@@ -1,0 +1,19 @@
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-ros'
+[INFO] [1793000145.821658556] [rviz2]: Stereo is NOT SUPPORTED
+[INFO] [1793000145.822414521] [rviz2]: OpenGl version: 4.5 (GLSL 4.5)
+[INFO] [1793000146.200725713] [rviz2]: Stereo is NOT SUPPORTED
+[INFO] [1793000153.469920914] [rviz2]: Trying to create a map of size 52 x 24 using 1 swatches
+[ERROR] [1793000153.495148153] [rviz2]: rviz/glsl120/indexed_8bit_image.vert
+rviz/glsl120/indexed_8bit_image.frag
+ GLSL link result :
+active samplers with a different type refer to the same texture image unit
+[WARN] [1793000429.672333208] [tf2_buffer]: Detected jump back in time. Clearing TF buffer.
+[WARN] [1793000429.674299593] [rviz2]: Detected jump back in time. Resetting RViz.
+[INFO] [1793000433.636292983] [rviz]: Message Filter dropping message: frame 'lidar_link' at time 158.700 for reason 'discarding message because the queue is full'
+[INFO] [1793000438.660777533] [rviz]: Message Filter dropping message: frame 'lidar_link' at time 161.200 for reason 'discarding message because the queue is full'
+[INFO] [1793000443.844794420] [rviz]: Message Filter dropping message: frame 'lidar_link' at time 163.800 for reason 'discarding message because the queue is full'
+[INFO] [1793000448.869181635] [rviz]: Message Filter dropping message: frame 'lidar_link' at time 166.300 for reason 'discarding message because the queue is full'
+[INFO] [1793000467.757337549] [rviz2]: Trying to create a map of size 52 x 24 using 1 swatches
+[WARN] [1793000523.672360757] [tf2_buffer]: Detected jump back in time. Clearing TF buffer.
+[WARN] [1793000523.673022040] [rviz2]: Detected jump back in time. Resetting RViz.
+[INFO] [1793000637.424244340] [rclcpp]: signal_handler(SIGINT/SIGTERM)

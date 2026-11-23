@@ -1,0 +1,14 @@
+$ ros2 run tf2_ros tf2_echo map odom --ros-args -p use_sim_time:=true
+At time 173.800000000
+- Translation: [-0.830, -0.056, 0.000]
+- Rotation: in Quaternion (xyzw) [0.000, 0.000, 0.016, 1.000]
+- Rotation: in RPY (radian) [0.000, -0.000, 0.032]
+- Rotation: in RPY (degree) [0.000, -0.000, 1.812]
+- Matrix:
+  0.999 -0.032  0.000 -0.830
+  0.032  0.999  0.000 -0.056
+  0.000  0.000  1.000  0.000
+  0.000  0.000  0.000  1.000
+[INFO] [1793000833.011365420] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+
+exit=124 (timeout)

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "practice_id": "PR08",
+  "commit": "4171e160500d2d731f9ff5de7527d3a78c0d5470",
+  "course_kit": {
+    "version": "v1-w08",
+    "archive_sha256": "aea8efd0a51668af63f2e475b82bfa28bd76c21f20d8afea6b136d43a56a88fb"
+  },
+  "commands": [
+    "colcon build --symlink-install --packages-select localization_case",
+    "colcon test --packages-select localization_case --event-handlers console_direct+",
+    "colcon test-result --test-result-base build/localization_case --verbose",
+    "python3 src/localization_case/scripts/inspect_recording.py fixtures/pr07-sensors --output evidence/pr08/recording-audit.json",
+    "python3 tools/pr08/run_experiments.py --rate 0.5",
+    "python3 tools/pr08/plot_results.py",
+    "python3 .course-kit/v1/tools/validate_localization.py evidence/pr08/localization.json --schema .course-kit/v1/fixtures/pr08/localization-result-v1.schema.json --map-yaml evidence/pr08/map.yaml --map-pgm evidence/pr08/map.pgm",
+    "python3 .course-kit/v1/tools/check_practice.py PR08 --submission ."
+  ],
+  "tests": [
+    {
+      "name": "colcon build localization_case",
+      "status": "passed"
+    },
+    {
+      "name": "9 pytest cases for time boundaries and truthful accounting",
+      "status": "passed"
+    },
+    {
+      "name": "Live AMCL replay and TF availability/covariance thresholds",
+      "status": "passed"
+    },
+    {
+      "name": "validate_localization.py: schema, metrics, map hashes",
+      "status": "passed"
+    },
+    {
+      "name": "check_practice.py PR08",
+      "status": "passed"
+    }
+  ],
+  "defect": {
+    "reproducer": "Replay the same bag with amcl-defect.yaml: chassis is absent, 10 diagnostic TF queries fail; see defect-launch.txt and tf.md.",
+    "root_cause": "base_frame_id=chassis breaks the lidar-to-base TF lookup. The recorded robot frame is base_link.",
+    "proof_after": "base_link restores map -> odom: 200/200 queries succeed; covariance median 0.034067669 m^2."
+  },
+  "claims": {
+    "public_tests_passed": true,
+    "defect_reproduced": true,
+    "defect_fixed": true
+  },
+  "time": {
+    "contact_academic_hours": 2,
+    "self_study_hours": 2.5
+  },
+  "ai_used": true
+}

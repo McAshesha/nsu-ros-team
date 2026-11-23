@@ -1,0 +1,185 @@
+[INFO] [launch]: All log files can be found below /home/ros/.ros/log/2026-10-26-07-39-32-632499-77e102b88c20-2851
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [map_server-1]: process started with pid [2864]
+[INFO] [amcl-2]: process started with pid [2865]
+[INFO] [lifecycle_manager-3]: process started with pid [2866]
+[lifecycle_manager-3] [INFO] [1793000373.861567097] [lifecycle_manager_localization]: Creating
+[amcl-2] [INFO] [1793000373.866609221] [amcl]:
+[amcl-2] 	amcl lifecycle node launched.
+[amcl-2] 	Waiting on external lifecycle transitions to activate
+[amcl-2] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[lifecycle_manager-3] [INFO] [1793000373.876772226] [lifecycle_manager_localization]: [34m[1mCreating and initializing lifecycle service clients[0m[0m
+[map_server-1] [INFO] [1793000373.897710706] [map_server]:
+[map_server-1] 	map_server lifecycle node launched.
+[map_server-1] 	Waiting on external lifecycle transitions to activate
+[map_server-1] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[map_server-1] [INFO] [1793000373.898011850] [map_server]: Creating
+[lifecycle_manager-3] [INFO] [1793000373.899035607] [lifecycle_manager_localization]: [34m[1mStarting managed nodes bringup...[0m[0m
+[lifecycle_manager-3] [INFO] [1793000373.899143229] [lifecycle_manager_localization]: [34m[1mConfiguring map_server[0m[0m
+[map_server-1] [INFO] [1793000374.041088809] [map_server]: Configuring
+[map_server-1] [INFO] [1793000374.041358670] [map_io]: Loading yaml file: /workspaces/ros/evidence/pr08/map.yaml
+[map_server-1] [INFO] [1793000374.047952022] [map_io]: resolution: 0.25
+[map_server-1] [INFO] [1793000374.048068802] [map_io]: origin[0]: -2.5
+[map_server-1] [INFO] [1793000374.048081527] [map_io]: origin[1]: -3
+[map_server-1] [INFO] [1793000374.048089092] [map_io]: origin[2]: 0
+[map_server-1] [INFO] [1793000374.048097218] [map_io]: free_thresh: 0.25
+[map_server-1] [INFO] [1793000374.048105013] [map_io]: occupied_thresh: 0.65
+[map_server-1] [INFO] [1793000374.048114802] [map_io]: mode: trinary
+[map_server-1] [INFO] [1793000374.048123540] [map_io]: negate: 0
+[map_server-1] [INFO] [1793000374.048775524] [map_io]: Loading image_file: /workspaces/ros/evidence/pr08/map.pgm
+[map_server-1] [INFO] [1793000374.067406402] [map_io]: Read map /workspaces/ros/evidence/pr08/map.pgm: 52 X 24 map @ 0.25 m/cell
+[lifecycle_manager-3] [INFO] [1793000374.090399535] [lifecycle_manager_localization]: [34m[1mConfiguring amcl[0m[0m
+[amcl-2] [INFO] [1793000374.128666172] [amcl]: Creating
+[amcl-2] [INFO] [1793000374.131478774] [amcl]: Configuring
+[amcl-2] [INFO] [1793000374.131689689] [amcl]: initTransforms
+[amcl-2] [INFO] [1793000374.153458916] [amcl]: initPubSub
+[amcl-2] [INFO] [1793000374.176029407] [amcl]: Subscribed to map topic.
+[lifecycle_manager-3] [INFO] [1793000374.277394729] [lifecycle_manager_localization]: [34m[1mActivating map_server[0m[0m
+[map_server-1] [INFO] [1793000374.278011631] [map_server]: Activating
+[map_server-1] [INFO] [1793000374.278466217] [map_server]: Creating bond (map_server) to lifecycle manager.
+[amcl-2] [INFO] [1793000374.279000736] [amcl]: Received a 52 X 24 map @ 0.250 m/pix
+[lifecycle_manager-3] [INFO] [1793000374.392503845] [lifecycle_manager_localization]: Server map_server connected with bond.
+[lifecycle_manager-3] [INFO] [1793000374.392632749] [lifecycle_manager_localization]: [34m[1mActivating amcl[0m[0m
+[amcl-2] [INFO] [1793000374.393370839] [amcl]: Activating
+[amcl-2] [INFO] [1793000374.393438202] [amcl]: initialPoseReceived
+[amcl-2] [INFO] [1793000374.393596664] [amcl]: Setting pose (0.000000): 0.000 0.000 0.000
+[amcl-2] [INFO] [1793000374.394417291] [amcl]: Creating bond (amcl) to lifecycle manager.
+[lifecycle_manager-3] [INFO] [1793000374.505179837] [lifecycle_manager_localization]: Server amcl connected with bond.
+[lifecycle_manager-3] [INFO] [1793000374.505308440] [lifecycle_manager_localization]: [34m[1mManaged nodes are active[0m[0m
+[lifecycle_manager-3] [INFO] [1793000374.505330924] [lifecycle_manager_localization]: [34m[1mCreating bond timer...[0m[0m
+[amcl-2] [INFO] [1793000431.639912691] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000432.043408977] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000432.043864651] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000432.446402331] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000432.446890749] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000432.850097338] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000432.850374015] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000433.251623757] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000433.251894713] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000433.653086941] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000433.653412543] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000434.053956697] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000434.054435175] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000434.465279646] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000434.465655746] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000434.876539553] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000434.876958261] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000435.279796805] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000435.280132589] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000435.683902220] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000435.684168446] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000436.083741684] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000436.084118049] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000436.485905795] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000436.486218333] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000436.886603027] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000436.887109639] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000437.296926454] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000437.297260114] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000437.702113241] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000437.702782926] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000438.103118806] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000438.103432346] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000438.507740744] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000438.508299119] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000438.912686687] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000438.913201405] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000439.315952045] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000439.316270355] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000439.718441008] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000439.718713507] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000440.120833324] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000440.121320928] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000440.533214557] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000440.533927177] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000440.936465069] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000440.937117901] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000441.338613525] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000441.338875784] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000441.739611492] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000441.739904853] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000442.141382523] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000442.141717916] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000442.541150543] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000442.541503080] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000442.951533020] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000442.951825139] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000443.352428204] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000443.352790182] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000443.756661341] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000443.757088387] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000444.159325107] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000444.159645251] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000444.569909786] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000444.570387102] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000444.982207539] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000444.982685617] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000445.390698866] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000445.391158366] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000445.800880656] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000445.814000835] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000446.215473958] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000446.215838610] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000446.618286202] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000446.618564854] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000447.019226779] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000447.019530360] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000447.423731306] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000447.424101319] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000447.835505866] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000447.835811141] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000448.237908521] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000448.238255558] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000448.638769099] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000448.639247918] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000449.042093389] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000449.042469885] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000449.444195637] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000449.444543836] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000449.844675215] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000449.845188141] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000450.246828209] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000450.247129095] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000450.657102492] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000450.657595339] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000451.059733445] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000451.060637206] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000451.465108426] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000451.465475373] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000451.867003005] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000451.867297769] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000452.272117420] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000452.272509677] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000452.675732441] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000452.676479361] [amcl]: createLaserObject
+[amcl-2] [ERROR] [1793000453.078954884] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000453.079475746] [amcl]: createLaserObject
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[INFO] [lifecycle_manager-3]: sending signal 'SIGINT' to process[lifecycle_manager-3]
+[INFO] [amcl-2]: sending signal 'SIGINT' to process[amcl-2]
+[INFO] [map_server-1]: sending signal 'SIGINT' to process[map_server-1]
+[lifecycle_manager-3] [INFO] [1793000453.098930498] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[lifecycle_manager-3] [INFO] [1793000453.099341702] [lifecycle_manager_localization]: Running Nav2 LifecycleManager rcl preshutdown (lifecycle_manager_localization)
+[lifecycle_manager-3] [INFO] [1793000453.099482952] [lifecycle_manager_localization]: [34m[1mTerminating bond timer...[0m[0m
+[amcl-2] [INFO] [1793000453.098985412] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[amcl-2] [INFO] [1793000453.099636907] [amcl]: Running Nav2 LifecycleNode rcl preshutdown (amcl)
+[amcl-2] [INFO] [1793000453.099931486] [amcl]: Deactivating
+[amcl-2] [INFO] [1793000453.100094399] [amcl]: Destroying bond (amcl) to lifecycle manager.
+[map_server-1] [INFO] [1793000453.099045626] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[map_server-1] [INFO] [1793000453.099259309] [map_server]: Running Nav2 LifecycleNode rcl preshutdown (map_server)
+[map_server-1] [INFO] [1793000453.099474275] [map_server]: Deactivating
+[map_server-1] [INFO] [1793000453.099529064] [map_server]: Destroying bond (map_server) to lifecycle manager.
+[map_server-1] [INFO] [1793000453.110314373] [map_server]: Cleaning up
+[map_server-1] [INFO] [1793000453.110418670] [map_server]: Destroying bond (map_server) to lifecycle manager.
+[amcl-2] [INFO] [1793000453.110798998] [amcl]: Cleaning up
+[map_server-1] [INFO] [1793000453.114291368] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[map_server-1] [INFO] [1793000453.122173760] [map_server]: Destroying
+[lifecycle_manager-3] [INFO] [1793000453.136843249] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[lifecycle_manager-3] [INFO] [1793000453.137319293] [lifecycle_manager_localization]: Destroying lifecycle_manager_localization
+[INFO] [map_server-1]: process has finished cleanly [pid 2864]
+[INFO] [lifecycle_manager-3]: process has finished cleanly [pid 2866]
+[amcl-2] [ERROR] [1793000453.483492907] [amcl]: Couldn't transform from lidar_link to chassis, even though the message notifier is in use: ("chassis" passed to lookupTransform argument target_frame does not exist. )
+[amcl-2] [INFO] [1793000453.489704600] [amcl]: Destroying bond (amcl) to lifecycle manager.
+[amcl-2] [INFO] [1793000453.492863764] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[amcl-2] [INFO] [1793000453.500771436] [amcl]: Destroying
+[INFO] [amcl-2]: process has finished cleanly [pid 2865]

@@ -1,0 +1,213 @@
+{
+  "first_clock_s": 157.765,
+  "last_clock_s": 169.886,
+  "queries": [
+    {
+      "bucket": 0,
+      "clock_s": 167.765,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "bucket": 1,
+      "clock_s": 167.865,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "bucket": 2,
+      "clock_s": 167.965,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "bucket": 3,
+      "clock_s": 168.065,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "bucket": 4,
+      "clock_s": 168.165,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "bucket": 5,
+      "clock_s": 168.265,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "bucket": 6,
+      "clock_s": 168.365,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "bucket": 7,
+      "clock_s": 168.465,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "bucket": 8,
+      "clock_s": 168.566,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "bucket": 9,
+      "clock_s": 168.665,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "bucket": 10,
+      "clock_s": 168.765,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "bucket": 11,
+      "clock_s": 168.865,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "bucket": 12,
+      "clock_s": 168.965,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "bucket": 13,
+      "clock_s": 169.065,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "bucket": 14,
+      "clock_s": 169.165,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "bucket": 15,
+      "clock_s": 169.265,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "bucket": 16,
+      "clock_s": 169.366,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "bucket": 17,
+      "clock_s": 169.465,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "bucket": 18,
+      "clock_s": 169.566,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "bucket": 19,
+      "clock_s": 169.665,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "bucket": 20,
+      "clock_s": 169.766,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "bucket": 21,
+      "clock_s": 169.865,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    }
+  ],
+  "poses": [],
+  "warmup_queries": [
+    {
+      "clock_s": 157.765,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "clock_s": 158.765,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "clock_s": 159.765,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "clock_s": 160.766,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "clock_s": 161.766,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "clock_s": 162.765,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "clock_s": 163.766,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "clock_s": 164.765,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "clock_s": 165.765,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    },
+    {
+      "clock_s": 166.765,
+      "success": false,
+      "error": "\"map\" passed to lookupTransform argument target_frame does not exist. "
+    }
+  ],
+  "sensor_stamps": {
+    "/vehicle/odom": {
+      "first_stamp_s": 158.62,
+      "min_clock_minus_stamp_s": -0.012000000000000455,
+      "max_clock_minus_stamp_s": 0.00899999999998613,
+      "count": 564,
+      "last_stamp_s": 169.88,
+      "clock_at_arrival_s": 169.882
+    },
+    "/vehicle/scan": {
+      "first_stamp_s": 158.7,
+      "min_clock_minus_stamp_s": 0.03499999999999659,
+      "max_clock_minus_stamp_s": 0.06299999999998818,
+      "count": 112,
+      "last_stamp_s": 169.8,
+      "clock_at_arrival_s": 169.837
+    }
+  },
+  "scan_overlays": [],
+  "errors": [
+    "Recording ended before the complete warmup and evaluation window; Expected 200 actual queries, got 22"
+  ]
+}

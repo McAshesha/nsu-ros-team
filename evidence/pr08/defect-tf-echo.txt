@@ -1,0 +1,5 @@
+$ ros2 run tf2_ros tf2_echo map odom --ros-args -p use_sim_time:=true
+[INFO] [1793000450.972636977] [tf2_echo]: Waiting for transform map ->  odom: Invalid frame ID "map" passed to canTransform argument target_frame - frame does not exist
+[INFO] [1793000452.824459481] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+
+exit=124 (timeout)

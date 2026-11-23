@@ -1,0 +1,12 @@
+[INFO] [1793000787.739889298] [localization_measurement]: READY: waiting for the first recorded /clock
+[INFO] [1793000800.343138639] [localization_measurement]: t0=157.763000000
+[INFO] [1793000860.125764099] [localization_measurement]: Collected 200 actual queries; waiting for replay to end
+{
+  "warmup_s": 10.0,
+  "duration_s": 20.0,
+  "tf_queries_total": 200,
+  "tf_queries_successful": 200,
+  "tf_availability": 1.0,
+  "amcl_pose_samples": 66,
+  "median_xy_covariance_m2": 0.03406766857443408
+}

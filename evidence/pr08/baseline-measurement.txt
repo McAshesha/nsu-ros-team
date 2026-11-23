@@ -1,0 +1,4 @@
+[INFO] [1792999934.106729365] [localization_measurement]: READY: waiting for the first recorded /clock
+[INFO] [1792999945.901747476] [localization_measurement]: t0=157.763000000
+INVALID EXPERIMENT: Recording ended before the complete warmup and evaluation window; Expected 200 actual queries, got 42
+[ros2run]: Process exited with failure 1

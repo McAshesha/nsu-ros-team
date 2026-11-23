@@ -1,0 +1,11 @@
+Starting fixed with fresh processes, ROS_DOMAIN_ID=169
+{
+  "warmup_s": 10.0,
+  "duration_s": 20.0,
+  "tf_queries_total": 200,
+  "tf_queries_successful": 200,
+  "tf_availability": 1.0,
+  "amcl_pose_samples": 66,
+  "median_xy_covariance_m2": 0.03406766857443408
+}
+Finished fixed

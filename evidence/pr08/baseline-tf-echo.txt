@@ -1,0 +1,3 @@
+$ ros2 run tf2_ros tf2_echo map odom --ros-args -p use_sim_time:=true
+
+exit=124 (timeout)
