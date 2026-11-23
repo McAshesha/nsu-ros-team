@@ -1,3 +1,39 @@
+## Практическая работа ПР09
+
+Выполнил: Колосов Егор. Docker `osrf/ros:jazzy-desktop-full`, ROS 2 Jazzy, course kit `v1-w11`.
+
+Пакет `perception_baseline` — ROS-обёртка baseline-детектора из `.course-kit/v1/fixtures/pr09`:
+2D-детекции, точка в `camera_optical_frame` по совмещённой глубине и диагностика причины,
+если пространственный результат неизвестен. Запуск ноды и отправка тестовой пары:
+[src/perception_baseline/README.md](src/perception_baseline/README.md).
+
+Разбиение по `capture_id` (из корня репозитория):
+
+```bash
+mkdir -p data evidence/pr09
+cp .course-kit/v1/fixtures/pr09/manifest-leaky.json data/manifest.json
+python3 .course-kit/v1/tools/evaluate_perception.py \
+  --fixture .course-kit/v1/fixtures/pr09 \
+  --manifest data/manifest.json --allow-leak \
+  --output evidence/pr09/metrics-before.json
+# в data/manifest.json: calibration = sample-01..04 (capture-a, capture-b), test = sample-05, sample-06
+python3 .course-kit/v1/tools/evaluate_perception.py \
+  --fixture .course-kit/v1/fixtures/pr09 \
+  --manifest data/manifest.json \
+  --output evidence/pr09/metrics.json
+```
+
+Сборка и тесты:
+
+```bash
+source /opt/ros/jazzy/setup.bash
+colcon build --symlink-install --packages-select perception_baseline
+source install/setup.bash
+colcon test --packages-select perception_baseline --event-handlers console_direct+
+colcon test-result --verbose
+python3 .course-kit/v1/tools/check_practice.py PR09 --submission .
+```
+
 ## Практическая работа ПР08
 
 Пакет `localization_case` запускает карту, AMCL и lifecycle manager
