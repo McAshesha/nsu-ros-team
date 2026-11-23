@@ -50,14 +50,17 @@ class PerceptionNode(Node):
         self.flush_pending()
 
     def on_depth(self, msg):
-        self.depth_buffer.append(msg)
+        self.depth_buffer.append((msg, time.monotonic()))
         self.flush_pending()
 
     def find_depth(self, stamp):
-        for depth in reversed(self.depth_buffer):
+        for depth, _ in reversed(self.depth_buffer):
             if (depth.header.stamp.sec, depth.header.stamp.nanosec) == (stamp.sec, stamp.nanosec):
                 return depth
         return None
+
+    def depth_arrived_since(self, moment):
+        return any(received >= moment for _, received in self.depth_buffer)
 
     def flush_pending(self):
         waiting = []
@@ -66,7 +69,12 @@ class PerceptionNode(Node):
             if depth is not None:
                 self.process(rgb, depth, None)
             elif time.monotonic() - received >= self.depth_wait_s:
-                reason = detector.STAMP_MISMATCH if self.depth_buffer else detector.MISSING_DEPTH
+                # другой stamp — только если depth пришла рядом с этим кадром;
+                # старая depth в буфере от прошлых кадров означает, что пары нет
+                if self.depth_arrived_since(received - self.depth_wait_s):
+                    reason = detector.STAMP_MISMATCH
+                else:
+                    reason = detector.MISSING_DEPTH
                 self.process(rgb, None, reason)
             else:
                 waiting.append((rgb, received))

@@ -145,6 +145,18 @@ def test_missing_depth_is_unknown_after_bounded_wait(harness):
     assert time.monotonic() - start < 3.0
 
 
+def test_old_depth_in_buffer_is_missing_not_stamp_mismatch(harness):
+    # depth прошлого кадра остаётся в буфере, новый кадр приходит без своей depth
+    _, old_depth = harness.images(stamp_shift_ns=1_000_000)
+    harness.depth_pub.publish(old_depth)
+    harness.spin_until(lambda: len(harness.perception.depth_buffer) > 0)
+    deadline = time.monotonic() + 0.8
+    while time.monotonic() < deadline:
+        harness.executor.spin_once(timeout_sec=0.05)
+    rgb, _ = harness.images()
+    check_unknown(harness, *harness.send(rgb), detector.MISSING_DEPTH)
+
+
 def test_different_stamp_is_unknown(harness):
     rgb, depth = harness.images(stamp_shift_ns=1_000_000)
     check_unknown(harness, *harness.send(rgb, depth), detector.STAMP_MISMATCH)
