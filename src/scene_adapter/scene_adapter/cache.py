@@ -14,9 +14,9 @@ def sha256_bytes(data):
 def cache_key(image_sha256, prompt_sha256, model_id, generation_config,
               schema_version=SCHEMA_VERSION):
     """SHA-256 от канонического JSON всех входов, влияющих на ответ модели."""
-    # ДЕФЕКТ (временно): prompt_sha256 не входит в ключ
     payload = {
         'image_sha256': image_sha256,
+        'prompt_sha256': prompt_sha256,
         'model_id': model_id,
         'generation_config': generation_config,
         'schema_version': schema_version,
