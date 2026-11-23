@@ -1,0 +1,3 @@
+evidence/pr08/map.yaml -text
+evidence/pr08/map.pgm -text
+src/localization_case/scripts/*.py text eol=lf

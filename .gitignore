@@ -8,3 +8,4 @@ __pycache__/
 .pytest_cache/
 *.py[cod]
 fixtures/pr07-sensors/
+fixtures/pr07-sensors-before-pr08/

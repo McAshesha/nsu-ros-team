@@ -1,3 +1,31 @@
+## Практическая работа ПР08
+
+Пакет `localization_case` запускает карту, AMCL и lifecycle manager
+на записи датчиков ПР07. Реализован измеритель доступности `map -> odom`
+и ковариации по времени `/clock`, сохранены опыты с `chassis` и `base_link`.
+Работа выполнена в существующем контейнере `practical_hofstadter`, ROS 2 Jazzy.
+
+Подробное объяснение цели, всех компонентов, параметров, изменений,
+экспериментов и команд: [evidence/pr08/README.md](evidence/pr08/README.md).
+Результат: [localization.json](evidence/pr08/localization.json),
+доказательство дефекта: [tf.md](evidence/pr08/tf.md),
+график: [localization.png](evidence/pr08/localization.png).
+
+В Bash существующего контейнера из `/workspaces/ros`:
+
+```bash
+source /opt/ros/jazzy/setup.bash
+colcon build --symlink-install --packages-select localization_case
+source install/setup.bash
+colcon test --packages-select localization_case --event-handlers console_direct+
+export ROS_DOMAIN_ID=169
+python3 tools/pr08/run_experiments.py --rate 0.5
+```
+
+Перед replay остановить симуляцию ПР07. В `evidence/pr08/report.json` указан
+SHA коммита реализации. Отчёт, результаты измерений и декларация ИИ
+входят в следующий коммит.
+
 ## Практическая работа ПР01
 
 Работа выполнялась в ROS 2 Jazzy. Для опыта использовались домены 16 и 17.

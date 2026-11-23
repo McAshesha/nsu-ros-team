@@ -3,8 +3,8 @@ name: ROS checks
 on: [push, pull_request]
 
 env:
-  COURSE_KIT_URL: https://ros.lms.ci.nsu.ru/downloads/robotics-course-kit-v1-w07-9b7fdd5424d3.tar.gz
-  COURSE_KIT_SHA256: 9b7fdd5424d3d97e47d51dbe23064934585e62135dc2902844dd679529bda929
+  COURSE_KIT_URL: https://ros.lms.ci.nsu.ru/downloads/robotics-course-kit-v1-w08-aea8efd0a516.tar.gz
+  COURSE_KIT_SHA256: aea8efd0a51668af63f2e475b82bfa28bd76c21f20d8afea6b136d43a56a88fb
 
 jobs:
   test:
@@ -17,7 +17,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install PR07 dependencies
+      - name: Install ROS dependencies
         shell: bash
         run: |
           apt-get update
@@ -26,6 +26,8 @@ jobs:
             ros-jazzy-xacro ros-jazzy-robot-state-publisher \
             ros-jazzy-ament-cmake-pytest ros-jazzy-ackermann-msgs \
             ros-jazzy-ros-gz ros-jazzy-rosbag2-storage-mcap \
+            ros-jazzy-nav2-amcl ros-jazzy-nav2-map-server \
+            ros-jazzy-nav2-lifecycle-manager ros-jazzy-tf2-ros-py ros-jazzy-tf2-tools \
             liburdfdom-tools python3-pytest
 
       - name: Download course kit
@@ -41,7 +43,7 @@ jobs:
         run: |
           source /opt/ros/jazzy/setup.bash
           colcon build --symlink-install --packages-select \
-            turtle_bringup patrol course_bringup course_description course_simulation
+            turtle_bringup patrol course_bringup course_description course_simulation localization_case
 
       - name: Check URDF
         shell: bash
@@ -56,10 +58,18 @@ jobs:
           source /opt/ros/jazzy/setup.bash
           source install/setup.bash
           colcon test --packages-select \
-            turtle_bringup patrol course_bringup course_description course_simulation \
+            turtle_bringup patrol course_bringup course_description course_simulation localization_case \
             --event-handlers console_direct+
           colcon test-result --verbose
 
-      - name: Check PR07 evidence
+      - name: Validate PR08 localization metrics
         shell: bash
-        run: python3 .course-kit/v1/tools/check_practice.py PR07 --submission .
+        run: |
+          python3 .course-kit/v1/tools/validate_localization.py \
+            evidence/pr08/localization.json \
+            --schema .course-kit/v1/fixtures/pr08/localization-result-v1.schema.json \
+            --map-yaml evidence/pr08/map.yaml --map-pgm evidence/pr08/map.pgm
+
+      - name: Check PR08 evidence
+        shell: bash
+        run: python3 .course-kit/v1/tools/check_practice.py PR08 --submission .
