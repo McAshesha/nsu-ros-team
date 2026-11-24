@@ -1,3 +1,24 @@
+## Практическая работа ПР10
+
+Выполнил: Колосов Егор. Docker `osrf/ros:jazzy-desktop-full` + `python3-jsonschema`, ROS 2 Jazzy, course kit `v1-w11`.
+
+Пакеты `robotics_course_interfaces` (сообщение `SceneDescription` из course kit) и `scene_adapter`:
+адаптер VLM публикует контракт SceneDescription v1 на `/perception/scene` в режимах mock и cache,
+live — только с явно внедрённым backend. Копии схемы и fixtures лежат в `contracts/` и `fixtures/vlm/`,
+их происхождение и SHA-256 — в [src/scene_adapter/README.md](src/scene_adapter/README.md),
+параметры — `config/vlm.yaml`. Обязательные проверки offline, без API и сети.
+
+```bash
+source /opt/ros/jazzy/setup.bash
+colcon build --symlink-install --packages-up-to scene_adapter
+source install/setup.bash
+colcon test --packages-select scene_adapter --event-handlers console_direct+
+colcon test-result --verbose
+ros2 interface show robotics_course_interfaces/msg/SceneDescription
+ros2 run scene_adapter scene_adapter --ros-args --params-file config/vlm.yaml
+python3 .course-kit/v1/tools/check_practice.py PR10 --submission .
+```
+
 ## Практическая работа ПР09
 
 Выполнил: Колосов Егор. Docker `osrf/ros:jazzy-desktop-full`, ROS 2 Jazzy, course kit `v1-w11`.

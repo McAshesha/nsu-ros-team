@@ -1,0 +1,17 @@
+# ПР10: проверка четырёх fixtures, Docker osrf/ros:jazzy-desktop-full, python3-jsonschema 4.10.3, коммит 1e2e439
+
+## 1. Сырые fixtures против contracts/scene-description-v1.schema.json (Draft 2020-12)
+
+$ python3 -c "import json,sys; from jsonschema import Draft202012Validator as V; v=V(json.load(open(\"contracts/scene-description-v1.schema.json\"))); [print(f, \"OK\" if not (e:=[x.message for x in v.iter_errors(json.load(open(f)))]) else \"ОШИБКА: \"+\"; \".join(e)) for f in sys.argv[1:]]" fixtures/vlm/scene-*.json
+fixtures/vlm/scene-clear.json OK
+fixtures/vlm/scene-extra-command.json ОШИБКА: Additional properties are not allowed ('drive' was unexpected)
+fixtures/vlm/scene-low-confidence.json OK
+fixtures/vlm/scene-stale.json OK
+
+## 2. Результат адаптера: abstain_threshold=0.5, max_age_s=0.25, now_s из fixtures/vlm/README.md
+
+$ python3 -c "import json; from scene_adapter import contract; from scene_adapter.adapter import SceneAdapter; v=contract.load_validator(\"contracts/scene-description-v1.schema.json\"); [print(f, now, json.dumps({k: s[k] for k in (\"status\",\"status_reason\",\"stamp_s\",\"frame_id\",\"traffic_light\",\"confidence\")}), \"выход по схеме:\", \"OK\" if not contract.schema_errors(v, s) else \"ОШИБКА\") for f, now in [(\"scene-clear.json\",0.1),(\"scene-low-confidence.json\",0.1),(\"scene-stale.json\",2.0),(\"scene-extra-command.json\",0.1)] for s in [SceneAdapter(\"mock\", v, 0.5, 0.25, fixture_path=\"fixtures/vlm/\"+f).describe(now)]]"
+scene-clear.json 0.1 {"status": "valid", "status_reason": "", "stamp_s": 0.0, "frame_id": "base_link", "traffic_light": "green", "confidence": 0.91} выход по схеме: OK
+scene-low-confidence.json 0.1 {"status": "unknown", "status_reason": "low_confidence", "stamp_s": 0.0, "frame_id": "base_link", "traffic_light": "unknown", "confidence": 0.0} выход по схеме: OK
+scene-stale.json 2.0 {"status": "unknown", "status_reason": "stale_input", "stamp_s": 1.0, "frame_id": "base_link", "traffic_light": "unknown", "confidence": 0.0} выход по схеме: OK
+scene-extra-command.json 0.1 {"status": "unknown", "status_reason": "invalid_schema", "stamp_s": 0.0, "frame_id": "base_link", "traffic_light": "unknown", "confidence": 0.0} выход по схеме: OK

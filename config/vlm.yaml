@@ -1,0 +1,15 @@
+scene_adapter:
+  ros__parameters:
+    # mock — fixture; cache — сохранённый ответ, при промахе backend; live — только с явным backend
+    mode: mock
+    schema_path: contracts/scene-description-v1.schema.json
+    fixture_path: fixtures/vlm/scene-clear.json
+    cache_dir: /tmp/scene_adapter_cache
+    prompt_path: config/scene-prompt.txt
+    model_id: Qwen3.8-27B
+    generation_config: '{"max_tokens": 512, "temperature": 0.0}'
+    # пустой backend_fixture: при промахе кэша сеть не вызывается
+    backend_fixture: ''
+    abstain_threshold: 0.5
+    max_age_s: 0.25
+    use_sim_time: true
