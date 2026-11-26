@@ -1,3 +1,20 @@
+## Практическая работа ПР11
+
+Табличная Q-политика учится удерживать робота в дискретной полосе. Она обучается на seed 0–1999 и проверяется на десяти отдельных seed из комплекта курса. Тесты проверяют обновление Q при завершении задачи и при достижении лимита шагов.
+
+Нужен Python 3.10 или новее. Распакуйте course kit `v1-w12` в `.course-kit/`. В этой версии сохранена среда ПР11 и обновлён манифест сдачи.
+
+```bash
+mkdir -p evidence/pr11
+PYTHONPATH=.course-kit/v1/rl_intro python3 -B -m unittest discover -s labs/pr11/tests -v
+PYTHONPATH=.course-kit/v1/rl_intro python3 -B labs/pr11/train.py \
+  --output evidence/pr11/q-table.json
+python3 -B .course-kit/v1/rl_intro/evaluate.py \
+  --policy evidence/pr11/q-table.json --output evidence/pr11/evaluation.json
+```
+
+Итоги заездов и разбор двух трасс с одинаковым seed сохранены в [evidence/pr11](evidence/pr11).
+
 ## Практическая работа ПР10
 
 Выполнил: Колосов Егор. Docker `osrf/ros:jazzy-desktop-full` + `python3-jsonschema`, ROS 2 Jazzy, course kit `v1-w11`.
