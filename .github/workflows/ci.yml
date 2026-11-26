@@ -84,8 +84,10 @@ jobs:
       - name: Check PR10 evidence
         shell: bash
         run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           submission="$(git log -1 --format=%H -- evidence/pr10/report.json)"
           snapshot="$(mktemp -d)"
+          git config --global --add safe.directory "$snapshot"
           git worktree add --detach "$snapshot" "$submission"
           trap 'git worktree remove "$snapshot"' EXIT
           python3 .course-kit/v1/tools/check_practice.py PR10 --submission "$snapshot"
