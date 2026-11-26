@@ -118,12 +118,22 @@ jobs:
           python3 -B .course-kit/v1/rl_intro/evaluate.py \
             --policy "$RUNNER_TEMP/pr11-q-table.json" --output "$RUNNER_TEMP/pr11-evaluation.json"
 
-      - name: Check PR11 evidence
-        if: hashFiles('evidence/pr11/report.json') != ''
+      - name: Check PR12 run script
+        shell: bash
+        run: bash -n labs/pr12/run.sh
+
+      - name: Check RL evidence at submission commits
         shell: bash
         run: |
-          submission="$(git log -1 --format=%H -- evidence/pr11/report.json)"
-          snapshot="$(mktemp -d)"
-          git worktree add --detach "$snapshot" "$submission"
-          trap 'git worktree remove "$snapshot"' EXIT
-          python3 .course-kit/v1/tools/check_practice.py PR11 --submission "$snapshot"
+          for number in 11 12; do
+            report="evidence/pr$number/report.json"
+            if [[ -f "$report" ]]; then
+              submission="$(git log -1 --format=%H -- "$report")"
+              snapshot="$(mktemp -d)"
+              git worktree add --detach "$snapshot" "$submission"
+              trap 'git worktree remove "$snapshot"' EXIT
+              python3 .course-kit/v1/tools/check_practice.py "PR$number" --submission "$snapshot"
+              git worktree remove "$snapshot"
+              trap - EXIT
+            fi
+          done
